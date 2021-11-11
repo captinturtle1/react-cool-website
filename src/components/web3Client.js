@@ -1,9 +1,15 @@
 import Web3 from 'web3';
+import NFTContractBuild from './abi.json'
 
 let selectedAccount;
 
-useEffect(() => {
+let nftContract;
 
+let isInitialized = false;
+
+const contractAddress = "0x0f96Cb47A5D4C083D2341C455A249e4a7e4E8Fab";
+
+export const initWeb3 = async () => {
   let provider = window.ethereum;
 
   if (typeof provider !== 'undefined') {
@@ -12,6 +18,7 @@ useEffect(() => {
       console.log(`Selected account is ${selectedAccount}`);
     }).catch(err => {
       console.log(err);
+      return;
     })
 
     window.ethereum.on('accountsChanged', function (accounts){
@@ -23,6 +30,15 @@ useEffect(() => {
   const web3 = new Web3(provider);
 
   const networkId = await web3.eth.net.getId();
+  
+  nftContract = new web3.eth.Contract(NFTContractBuild, contractAddress);
 
-  const nftContract = new web3.eth.Contract(abi, nftContract.networks[networkId].address)
-})
+  isInitialized = true;
+}
+
+export const mintToken = async () => {
+    if (!isInitialized) {
+        await initWeb3();
+    }
+    return nftContract.methods.mint(selectedAccount).send({ from: selectedAccount});
+};

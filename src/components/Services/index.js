@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon4 from '../../images/regularPass.png';
 import Icon5 from '../../images/ogPass.png';
 import {
@@ -16,9 +16,24 @@ import {useContractCall} from "@usedapp/core";
 import { utils, ethers } from "ethers";
 import abi from '../abi.json'
 import Web3 from 'web3';
+import { initWeb3, mintToken } from '../web3Client'
 
 const Services = () => {
 
+  const [minted, setMinted] = useState(false);
+
+  //initWeb3();
+
+  const mint = () => {
+    mintToken().then(tx => {
+      console.log(tx);
+      setMinted(true);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+  
   return (
     <ServicesContainer id='services'>
       <ServicesH1>Get access to the group.</ServicesH1>
@@ -33,7 +48,9 @@ const Services = () => {
             0/105 Minted
           </ServicesP>
           <Btn>
-            <BtnLink>Mint OG Pass</BtnLink>
+            <BtnLink
+            
+            >Mint OG Pass</BtnLink>
           </Btn>
         </ServicesCard>
         <ServicesCard>
@@ -46,9 +63,11 @@ const Services = () => {
             0/20 Minted 
           </ServicesP>
           <Btn>
-            <BtnLink
-            
-            >Mint Regular Pass</BtnLink>
+            {!minted ? (
+              <BtnLink onClick={() => mint()}>Mint Regular Pass</BtnLink>
+            ) : (
+              <BtnLink>Minted</BtnLink>
+            )}
           </Btn>
         </ServicesCard>
       </ServicesWrapper>
