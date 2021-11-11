@@ -1,0 +1,23 @@
+{
+    "CONTRACT_ADDRESS": "0x0f96Cb47A5D4C083D2341C455A249e4a7e4E8Fab",
+    "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x0f96Cb47A5D4C083D2341C455A249e4a7e4E8Fab",
+    "NETWORK": {
+      "NAME": "Rinkeby Testnet",
+      "SYMBOL": "Ether",
+      "ID": 4
+    },
+    "NFT_NAME": ".jpeg Pass",
+    "SYMBOL": "WLFPK",
+    "MAX_SUPPLY": 125,
+    "MAX_SUPPLYREGULAR": 105,
+    "MAX_SUPPLYOG": 20,
+    "WEI_COST": 80000000000000000,
+    "WEI_COST2": 40000000000000000,
+    "DISPLAY_COST": 0.08,
+    "DISPLAY_COST2": 0.04,
+    "GAS_LIMIT": 285000,
+    "MARKETPLACE": "Opeansea",
+    "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/jpeg-season-3-1h7iu5bryi",
+    "SHOW_BACKGROUND": false
+  }
+  
