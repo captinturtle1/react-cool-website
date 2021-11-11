@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Icon4 from '../../images/regularPass.png';
 import Icon5 from '../../images/ogPass.png';
 import {
@@ -15,11 +15,10 @@ import {
 import {useContractCall} from "@usedapp/core";
 import { utils, ethers } from "ethers";
 import abi from '../abi.json'
+import Web3 from 'web3';
 
 const Services = () => {
 
-
-  
   return (
     <ServicesContainer id='services'>
       <ServicesH1>Get access to the group.</ServicesH1>
