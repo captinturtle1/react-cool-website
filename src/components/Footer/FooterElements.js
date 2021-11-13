@@ -113,6 +113,7 @@ export const SocialIconLink = styled.a`
 `;
 
 export const iconIcon = styled.img`
-  height: 16px;
-  width: 16px;
+  height: 160px;
+  width: 160px;
+  margin-bottom: 10px;
 `;

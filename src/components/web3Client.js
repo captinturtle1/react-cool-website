@@ -7,7 +7,7 @@ let nftContract;
 
 let isInitialized = false;
 
-const contractAddress = "0x0f96Cb47A5D4C083D2341C455A249e4a7e4E8Fab";
+const contractAddress = "0x7Feb28A267255754FC06b81fB4886DFce1aFfe9A";
 
 export const initWeb3 = async () => {
   let provider = window.ethereum;
@@ -32,13 +32,25 @@ export const initWeb3 = async () => {
   const networkId = await web3.eth.net.getId();
   
   nftContract = new web3.eth.Contract(NFTContractBuild, contractAddress);
-
   isInitialized = true;
 }
+
+export const getCurrentOgMintPassCount = async () => {
+    if (!isInitialized) {
+        return nftContract.methods.currentOGSupply().call();
+    }
+};
 
 export const mintToken = async () => {
     if (!isInitialized) {
         await initWeb3();
     }
-    return nftContract.methods.mint(selectedAccount).send({ from: selectedAccount});
+    return nftContract.methods.mint(1).send({ gasLimit: 285000, from: selectedAccount, value: 80000000000000000 });
+};
+
+export const mintTokenOG = async () => {
+    if (!isInitialized) {
+        await initWeb3();
+    }
+    return nftContract.methods.mintOG(1).send({ gasLimit: 285000, from: selectedAccount, value: 40000000000000000});
 };

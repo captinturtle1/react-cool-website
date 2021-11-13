@@ -33,26 +33,16 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrap>
-        <FooterLinksContainer>
-        </FooterLinksContainer>
-        <SocialMedia>
-          <SocialMediaWrap>
             <SocialLogo to='/' onClick={toggleHome}>
-              .jpeg
+              .JPEG
             </SocialLogo>
-            <WebsiteRights>.jpeg © 2021 All rights reserved.</WebsiteRights>
-              <SocialIconLink
-                target='_blank'
-                aria-label='Twitter'
-                href='//www.twitter.com/jpegsquared'
-              >
-                <FaTwitter />
+            <WebsiteRights>.JPEG © 2021 ALL RIGHTS RESERVED.</WebsiteRights>
+              <SocialIconLink target='_blank' aria-label='Twitter' href='//www.twitter.com/jpegsquared'>
+              <FaTwitter />
+                <iconIcon src={openseaIcon} />
               </SocialIconLink>
               <SocialIconLink href='/' target='_blank' aria-label='Linkedin'>
-              <iconIcon src={openseaIcon} />
               </SocialIconLink>
-          </SocialMediaWrap>
-        </SocialMedia>
       </FooterWrap>
     </FooterContainer>
   );

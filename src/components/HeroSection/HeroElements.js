@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { MdKeyboardArrowRight, MdArrowForward } from 'react-icons/md';
 
+
+
 export const HeroContainer = styled.div`
   background: #0c0c0c;
   display: flex;
@@ -57,12 +59,45 @@ export const VideoBg = styled.video`
 
 export const HeroContent = styled.div`
   z-index: 3;
-  max-width: 1200px;
-  position: absolute;
-  padding: 8px 24px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  border-radius: 10px;
+  max-height: 1920px;
+  padding: 60px;
+`;
+
+export const HeroContent2 = styled.div`
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  max-height: 1920px;
+  padding: 60px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const HeroContent3 = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
 `;
 
 export const HeroH1 = styled.h1`
@@ -82,18 +117,36 @@ export const HeroH1 = styled.h1`
 export const HeroP = styled.p`
   margin-top: 24px;
   color: #fff;
-  font-size: 24px;
+  font-size: 20px;
   text-align: center;
   max-width: 600px;
+  min-width: 600px;
 
   @media screen and (max-width: 768px) {
-    font-size: 24px;
+    font-size: 10;
+    min-width: 300px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 2;
+  }
+`;
+
+export const HeroSB = styled.p`
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 25px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
   }
 
   @media screen and (max-width: 480px) {
     font-size: 18px;
   }
 `;
+
 export const HeroBtnWrapper = styled.div`
   margin-top: 32px;
   display: flex;
@@ -109,4 +162,10 @@ export const ArrowForward = styled(MdArrowForward)`
 export const ArrowRight = styled(MdKeyboardArrowRight)`
   margin-left: 8px;
   font-size: 20px;
+`;
+
+export const Img = styled.img`
+    width: 306.02px;
+    height: 559.13px;
+    z-index: 4;
 `;
