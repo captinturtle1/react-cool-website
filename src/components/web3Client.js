@@ -7,7 +7,7 @@ let nftContract;
 
 let isInitialized = false;
 
-const contractAddress = "0x7Feb28A267255754FC06b81fB4886DFce1aFfe9A";
+const contractAddress = "0xe4A544FA2551F7D3bF5A9CED858b2d81c51FB56A";
 
 export const initWeb3 = async () => {
   let provider = window.ethereum;
@@ -35,15 +35,58 @@ export const initWeb3 = async () => {
   isInitialized = true;
 }
 
+export const checkIfPaused = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let isPaused = nftContract.methods.paused().call();
+  return isPaused;
+};
+
+export const checkIfMinted = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let hasMinted = nftContract.methods.alreadyMinted(selectedAccount).call();
+  return hasMinted;
+};
+
+export const checkIfIsOG = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let isOG = nftContract.methods.isOG(selectedAccount).call();
+  return isOG;
+
+};
+
+export const checkIfIsWhitelisted = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let isWhitelisted = nftContract.methods.isWhitelisted(selectedAccount).call();
+  return isWhitelisted;
+};
+
 export const getCurrentOgMintPassCount = async () => {
     if (!isInitialized) {
-        return nftContract.methods.currentOGSupply().call();
+      await initWeb3();
     }
+    let supply = nftContract.methods.currentOGSupply().call();
+    return supply;
+};
+
+export const getCurrentRegularMintPassCount = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let supply = nftContract.methods.currentRegularSupply().call();
+  return supply;
 };
 
 export const mintToken = async () => {
     if (!isInitialized) {
-        await initWeb3();
+      await initWeb3();
     }
     return nftContract.methods.mint(1).send({ gasLimit: 285000, from: selectedAccount, value: 80000000000000000 });
 };

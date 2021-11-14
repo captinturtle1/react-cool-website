@@ -12,7 +12,8 @@ import {
   Subtitle,
   BtnWrap,
   ImgWrap,
-  Img
+  Img,
+  SocialIconLink
 } from './InfoElements';
 
 const InfoSection = ({
@@ -43,19 +44,10 @@ const InfoSection = ({
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
-                  <Button
-                    target='_blank' aria-label='Our Medium' href='https://jpegsquared.medium.com/'
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact='true'
-                    offset={-80}
-                    primary={primary ? 1 : 0}
-                    dark={dark ? 1 : 0}
-                    dark2={dark2 ? 1 : 0}
-                  >
+                  <SocialIconLink
+                    target='_blank' aria-label='Our Medium' href='//jpegsquared.medium.com'>
                     {buttonLabel}
-                  </Button>
+                  </SocialIconLink>
                 </BtnWrap>
               </TextWrapper>
             </Column1>

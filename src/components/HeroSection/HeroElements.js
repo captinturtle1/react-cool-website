@@ -10,6 +10,7 @@ export const HeroContainer = styled.div`
   align-items: center;
   padding: 0 30px;
   height: 100vh;
+  min-height: 700px;
   position: relative;
   z-index: 1;
 
@@ -65,7 +66,7 @@ export const HeroContent = styled.div`
   align-items: center;
   border-radius: 10px;
   max-height: 1920px;
-  padding: 60px;
+  padding: 0px;
 `;
 
 export const HeroContent2 = styled.div`
@@ -90,14 +91,15 @@ export const HeroContent3 = styled.div`
   grid-template-columns: 1fr 1fr;
   align-items: center;
   
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 800px) {
     grid-template-columns: 1fr 1fr;
   }
   
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 0 20px;
   }
+
+  
 `;
 
 export const HeroH1 = styled.h1`
@@ -117,10 +119,9 @@ export const HeroH1 = styled.h1`
 export const HeroP = styled.p`
   margin-top: 24px;
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   max-width: 600px;
-  min-width: 600px;
 
   @media screen and (max-width: 768px) {
     font-size: 10;
@@ -129,6 +130,10 @@ export const HeroP = styled.p`
 
   @media screen and (max-width: 480px) {
     font-size: 2;
+  }
+
+  @media screen and (max-width: 280px) {
+    display: none;
   }
 `;
 
@@ -165,7 +170,7 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
 `;
 
 export const Img = styled.img`
-    width: 306.02px;
-    height: 559.13px;
+    width: 312px;
+    height: 508.3px;
     z-index: 4;
 `;

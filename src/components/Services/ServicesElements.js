@@ -6,16 +6,15 @@ export const ServicesContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background: #010606;
+  background: #191919;
 
-  @media screen and (max-width: 768px) {
-    height: 200vh;
+  @media screen and (max-height: 800px) {
+    height: 800px;
   }
 
-  @media screen and (max-width: 480px) {
-    height: 200vh;
+  @media screen and (max-width: 768px) {
+    height: 1350px;
   }
 `;
 
@@ -46,7 +45,7 @@ export const ServicesCard = styled.div`
   align-items: center;
   border-radius: 40px;
   max-height: 800px;
-  padding: 40px;
+  padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
 `;
@@ -56,11 +55,22 @@ export const ServicesIcon = styled.img`
   height: 325px;
   width: 300px;
   margin-bottom: 10px;
+  
+  @media screen and (max-width: 379px) {
+    height: 243.75px;
+    width: 225px;
+  }
+
+  @media screen and (max-width: 320px) {
+    height: 162.5px;
+    width: 150px;
+  }
 `;
 
 export const ServicesH1 = styled.h1`
   font-size: 2.5rem;
   color: #fff;
+  margin-top: 150px;
   margin-bottom: 64px;
 
   @media screen and (max-width: 480px) {
@@ -86,10 +96,10 @@ export const Btn = styled.nav`
 
 export const BtnLink = styled(LinkR)`
   border-radius: 50px;
-  background: #6fa8dc;
+  background: #2986cc;
   white-space: nowrap;
   padding: 10px 22px;
-  color: #010606;
+  color: #f3f6f4;
   font-size: 16px;
   outline: none;
   border: none;
@@ -99,9 +109,20 @@ export const BtnLink = styled(LinkR)`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
+    background: #206BA3;
   }
+`;
+
+export const BtnButNotButton = styled.div`
+  background: #2986cc;
+  white-space: nowrap;
+  padding: 10px 22px;
+  color: #f3f6f4;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
 `;
 
 export const paragraph = styled.p`
@@ -121,4 +142,8 @@ export const paragraph = styled.p`
   @media screen and (max-width: 480px) {
     font-size: 2;
   }
+`;
+
+export const ghost = styled.div`
+
 `;

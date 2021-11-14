@@ -12,7 +12,7 @@ export const InfoContainer = styled.div`
 export const InfoWrapper = styled.div`
   display: grid;
   z-index: 1;
-  height: 860px;
+  height: 900px;
   width: 100%;
   max-width: 1100px;
   margin-right: auto;
@@ -99,4 +99,33 @@ export const Img = styled.img`
   margin-right: 0;
   margin-left: 10px;
   padding-right: 0;
+
+  @media screen and (max-width: 250px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    
+  }
+`;
+
+export const SocialIconLink = styled.a`
+  border-radius: 50px;
+  background: ${({ primary }) => (primary ? '#2986cc' : '#2986cc')};
+  white-space: nowrap;
+  padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
+  color: ${({ dark }) => (dark ? '#f3f6f4' : '#f3f6f4')};
+  font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: ${({ primary }) => (primary ? '#206BA3' : '#206BA3')};
+  }
 `;

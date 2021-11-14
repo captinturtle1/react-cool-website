@@ -111,8 +111,7 @@ export const NavBtnLink = styled(LinkR)`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
+    background: #206BA3;
   }
 `;
 
@@ -122,12 +121,11 @@ export const NavBtnLinked = styled(LinkR)`
   white-space: nowrap;
   padding: 10px 22px;
   min-width: 120px;
-  max-width: 120px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #f3f6f4;
-  font-size: 16px;
+  font-size: 10px;
   outline: none;
   border: none;
   cursor: pointer;

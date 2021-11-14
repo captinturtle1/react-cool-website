@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../ButtonElements';
-//import Video from '../../videos/video.mp4';
+import Video from '../../videos/colorshift.mp4';
 import gridExample from '../../images/fronPageCoolPicture.png'
 import ReactPlayer from 'react-player'
 import {
@@ -27,16 +27,7 @@ function HeroSection() {
   return (
     <HeroContainer id='home'>
       <HeroBg>
-      <ReactPlayer
-      width="2560px"
-      height="1440px"
-      overflow="hidden"
-      url='https://colorshiftbackground.s3.us-west-1.amazonaws.com/colorshift.mp4'
-      playing={true}
-      loop={true}
-      muted={true}
-      controls={false}
-      />
+        <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
       </HeroBg>
       <HeroContent3>
         <HeroContent>

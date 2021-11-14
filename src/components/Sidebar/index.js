@@ -12,7 +12,7 @@ import {
   NavBtnLink,
   NavBtnLinked
 } from './SidebarElements';
-import {useEthers} from "@usedapp/core";
+import {useEthers, shortenAddress} from "@usedapp/core";
 
 const Sidebar = ({ isOpen, toggle }) => {
   
@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, toggle }) => {
         </SidebarMenu>
         <SideBtnWrap>
             {!account && <SidebarRoute onClick={activateBrowserWallet}> Connect </SidebarRoute>}
-            {account && <SidebarRoute onClick={deactivate}>{account}</SidebarRoute>}
+            {account && <SidebarRoute onClick={deactivate}>{shortenAddress(account)}</SidebarRoute>}
         </SideBtnWrap>
       </SidebarWrapper>
     </SidebarContainer>

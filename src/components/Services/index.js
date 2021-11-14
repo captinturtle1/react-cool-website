@@ -13,26 +13,66 @@ import {
   ServicesP,
   Btn,
   BtnLink,
-  paragraph
+  BtnButNotButton,
+  paragraph,
+  ghost
 } from './ServicesElements';
 import {useContractCall} from "@usedapp/core";
 import { utils, ethers } from "ethers";
 import abi from '../abi.json'
 import Web3 from 'web3';
-import { initWeb3, mintToken, getCurrentOgMintPassCount, mintTokenOG } from '../web3Client'
+import { checkIfPaused, getCurrentOgMintPassCount, getCurrentRegularMintPassCount, checkIfMinted, checkIfIsOG, checkIfIsWhitelisted, mintToken, mintTokenOG } from '../web3Client'
 
 const Services = () => {
 
-  const [minted, setMinted] = useState(false);
-  const [mintedOG, setMintedOG] = useState(false);
-  const {ogBalance} = useState(0);
+  const [saleStatus, setSaleStatus] = useState(0);
+  const [OGbalance, setOGBalance] = useState(0);
+  const [REGULARbalance, setRegularBalance] = useState(0);
+  const [hasMinted, setHasMinted] = useState(0);
+  const [isAddressOG, setIsAddressOG] = useState(false);
+  const [isAddressWhitelisted, setIsAddressWhitelisted] = useState(false);
+  
 
-  //initWeb3();
 
+  const isSaleLive = () => {
+    checkIfPaused().then(saleStatus => {
+      setSaleStatus(saleStatus);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  isSaleLive();
+
+  const isOG = () => {
+    checkIfIsOG().then(isAddressOG => {
+      setIsAddressOG(isAddressOG);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  isOG();
+
+  const isWhitelisted = () => {
+    checkIfIsWhitelisted().then(isAddressWhitelisted => {
+      setIsAddressWhitelisted(isAddressWhitelisted);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  isWhitelisted();
+
+  const getHasMinted = () => {
+    checkIfMinted().then(hasMinted => {
+      setHasMinted(hasMinted);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  getHasMinted();
+  
   const mint = () => {
     mintToken().then(tx => {
       console.log(tx);
-      setMinted(true);
     })
     .catch((err) => {
       console.log(err);
@@ -42,53 +82,93 @@ const Services = () => {
   const mintOG = () => {
     mintTokenOG().then(tx => {
       console.log(tx);
-      setMintedOG(true);
     })
     .catch((err) => {
       console.log(err);
     })
   }
 
-  /*const fetchBalance = () => [
-    getCurrentOgMintPassCount().then(balance => {
-      ogBalance(balance);
+  const fetchOGBalance = () => [
+    getCurrentOgMintPassCount().then(OGbalance => {
+      setOGBalance(OGbalance);
+      console.log("fetchingOGBalance");
     }).catch(err => {
-      console.og(err);
+      console.log(err);
     })
-  ]*/
+  ]
+  fetchOGBalance();
+
+  const fetchRegularBalance = () => [
+    getCurrentRegularMintPassCount().then(REGULARbalance => {
+      setRegularBalance(REGULARbalance);
+      console.log("fetchingBalance");
+    }).catch(err => {
+      console.log(err);
+    })
+  ]
+  fetchRegularBalance();
+
   
+
   return (
     <ServicesContainer id='services'>
       <ServicesH1>Mint your wolf.</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
-          <ServicesIcon src={hidden} />
-          <ServicesH2>Regular Pass</ServicesH2>
-          <ServicesP>
-            0/105 Minted
-          </ServicesP>
-          <Btn>
-            {!minted ? (
-              <BtnLink onClick={() => mint()}>Mint (0.08)</BtnLink>
-            ) : (
-              <BtnLink>Minted</BtnLink>
-            )}
-          </Btn>
-
-        </ServicesCard>
-        <ServicesCard>
           <ServicesIcon src={hiddenOG} />
           <ServicesH2>OG Pass</ServicesH2>
           <ServicesP>
-            0/20 Minted 
+            {OGbalance}/20 Minted 
           </ServicesP>
-          <Btn>
-          {!mintedOG ? (
-              <BtnLink onClick={() => mintOG()}>Mint (0.04)</BtnLink>
-            ) : (
-              <BtnLink>Minted</BtnLink>
+          {!saleStatus ? (
+          <ghost>
+          {!hasMinted ? (
+            <Btn>
+              {isAddressOG ? (
+                <BtnLink onClick={() => mintOG()}>Mint (0.04)</BtnLink>)
+              : (
+                <BtnButNotButton>Not OG</BtnButNotButton>
+              )}
+            </Btn>
+          ) : (
+            <Btn>
+              <BtnButNotButton>Minted</BtnButNotButton>
+            </Btn>
+          )}
+          </ghost>
+          ) : (
+            <Btn>
+              <BtnButNotButton>Not Live</BtnButNotButton>
+            </Btn>
+          )}
+        </ServicesCard>
+        <ServicesCard>
+          <ServicesIcon src={hidden} />
+          <ServicesH2>Regular Pass</ServicesH2>
+          <ServicesP>
+            {REGULARbalance}/105 Minted
+          </ServicesP>
+          {!saleStatus ? (
+          <ghost>
+          {!hasMinted ? (
+            <Btn>
+              {isAddressWhitelisted ? (
+                <BtnLink onClick={() => mint()}>Mint (0.08)</BtnLink>)
+              : (
+                <BtnButNotButton>Not Whitelisted</BtnButNotButton>
+              )}
+            </Btn>
+          ) : (
+            <Btn>
+              <BtnButNotButton>Minted</BtnButNotButton>
+            </Btn>
+          )}
+          </ghost>
+          ) : (
+            <Btn>
+              <BtnButNotButton>Not Live</BtnButNotButton>
+            </Btn>
             )}
-          </Btn>
         </ServicesCard>
       </ServicesWrapper>
     </ServicesContainer>

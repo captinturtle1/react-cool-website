@@ -14,7 +14,7 @@ import {
   NavBtnLink,
   NavBtnLinked
 } from './NavbarElements';
-import {useEthers} from "@usedapp/core";
+import {useEthers, shortenAddress} from "@usedapp/core";
 
 
 const Navbar = ({ toggle }) => {
@@ -78,7 +78,7 @@ const Navbar = ({ toggle }) => {
             </NavMenu>
             <NavBtn>
               {!account && <NavBtnLink onClick={activateBrowserWallet}> Connect </NavBtnLink>}
-              {account && <NavBtnLinked onClick={deactivate}>{account}</NavBtnLinked>}
+              {account && <NavBtnLinked onClick={deactivate}>{shortenAddress(account)}</NavBtnLinked>}
             </NavBtn>
           </NavbarContainer>
         </Nav>
