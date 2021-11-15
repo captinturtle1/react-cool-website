@@ -98,6 +98,10 @@ export const SocialLogo = styled(Link)`
 export const WebsiteRights = styled.small`
   color: #fff;
   margin-bottom: 16px;
+
+  @media screen and (max-width: 333px) {
+    font-size: 10px;
+  }
 `;
 
 export const SocialIcons = styled.div`

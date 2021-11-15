@@ -121,7 +121,7 @@ const Services = () => {
           <ServicesIcon src={hiddenOG} />
           <ServicesH2>OG Pass</ServicesH2>
           <ServicesP>
-            {OGbalance}/20 Minted 
+            {OGbalance}/15 Minted 
           </ServicesP>
           {!saleStatus ? (
           <ghost>
@@ -149,7 +149,7 @@ const Services = () => {
           <ServicesIcon src={hidden} />
           <ServicesH2>Regular Pass</ServicesH2>
           <ServicesP>
-            {REGULARbalance}/105 Minted
+            {REGULARbalance}/110 Minted
           </ServicesP>
           {!saleStatus ? (
           <ghost>
