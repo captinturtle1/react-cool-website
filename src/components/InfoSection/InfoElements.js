@@ -6,6 +6,7 @@ export const InfoContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 100px 0;
+    text-align: center;
   }
 `;
 
@@ -86,6 +87,10 @@ export const Subtitle = styled.p`
 export const BtnWrap = styled.div`
   display: flex;
   justify-content: flex-start;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const ImgWrap = styled.div`
