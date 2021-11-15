@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button } from '../ButtonElements';
 import Video from '../../videos/colorshift.mp4';
 import gridExample from '../../images/fronPageCoolPicture.png'
-import ReactPlayer from 'react-player'
 import {
   HeroContainer,
   HeroBg,

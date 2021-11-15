@@ -6,6 +6,7 @@ import HeroSection from '../components/HeroSection';
 import InfoSection from '../components/InfoSection';
 import InfoArtist from '../components/InfoArtist';
 import Services from '../components/Services';
+import Auction from '../components/Auction';
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,7 @@ function Home() {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <HeroSection />
+      <Auction />
       <Services />
       <InfoSection />
       <InfoArtist />

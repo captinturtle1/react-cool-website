@@ -51,6 +51,18 @@ const Navbar = ({ toggle }) => {
               <FaBars />
             </MobileIcon>
             <NavMenu>
+            <NavItem>
+                <NavLinks
+                  to='Auction'
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact='true'
+                  offset={-80}
+                >
+                  Auction
+                </NavLinks>
+              </NavItem>
               <NavItem>
                 <NavLinks
                   to='services'

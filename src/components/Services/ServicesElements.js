@@ -2,6 +2,26 @@ import { Link as LinkS } from 'react-scroll';
 import { Link as LinkR } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const HeroBg = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+`;
+
+export const VideoBg = styled.video`
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  background: #232a34;
+`;
+
 export const ServicesContainer = styled.div`
   height: 100vh;
   display: flex;
@@ -48,6 +68,7 @@ export const ServicesCard = styled.div`
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
+  margin-bottom: 80px;
 `;
 
 export const ServicesIcon = styled.img`
@@ -70,7 +91,7 @@ export const ServicesIcon = styled.img`
 export const ServicesH1 = styled.h1`
   font-size: 2.5rem;
   color: #fff;
-  margin-top: 150px;
+  margin-top: 64px;
   margin-bottom: 64px;
 
   @media screen and (max-width: 480px) {

@@ -15,13 +15,13 @@ import {
   BtnLink,
   BtnButNotButton,
   paragraph,
-  ghost
+  ghost,
+  HeroBg,
+  VideoBg
 } from './ServicesElements';
-import {useContractCall} from "@usedapp/core";
-import { utils, ethers } from "ethers";
-import abi from '../abi.json'
-import Web3 from 'web3';
 import { checkIfPaused, getCurrentOgMintPassCount, getCurrentRegularMintPassCount, checkIfMinted, checkIfIsOG, checkIfIsWhitelisted, mintToken, mintTokenOG } from '../web3Client'
+import Video from '../../videos/colorshift.mp4';
+
 
 const Services = () => {
 
@@ -112,6 +112,9 @@ const Services = () => {
 
   return (
     <ServicesContainer id='services'>
+      <HeroBg>
+        <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
+      </HeroBg>
       <ServicesH1>Mint your wolf.</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
@@ -171,6 +174,9 @@ const Services = () => {
             )}
         </ServicesCard>
       </ServicesWrapper>
+      <HeroBg>
+        <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
+      </HeroBg>
     </ServicesContainer>
   );
 };
