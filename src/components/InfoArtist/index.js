@@ -20,7 +20,7 @@ const InfoSection = ({}) => {
   console.log(false);
   return (
     <>
-      <InfoContainer id={'signup'}>
+      <InfoContainer id={'InfoArtist'}>
         <InfoWrapper>
           <InfoRow>
             <Column1>

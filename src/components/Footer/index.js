@@ -1,30 +1,20 @@
 import React from 'react';
 import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
   FaTwitter,
-  FaLinkedin
+  FaMedium
 } from 'react-icons/fa';
 import { animateScroll as scroll } from 'react-scroll';
 import {
   FooterContainer,
   FooterWrap,
-  FooterLinksContainer,
-  FooterLinksWrapper,
-  FooterLinkItems,
-  FooterLinkTitle,
-  FooterLink,
-  SocialMedia,
   SocialMediaWrap,
   SocialLogo,
   WebsiteRights,
   SocialIcons,
-  SocialIconLink,
-  iconIcon
+  SocialIconLink
 } from './FooterElements';
 
-import openseaIcon from '../../images/opensea-logo.png';
+import openseaIcon from '../../images/openseaIcon.png';
 
 const Footer = () => {
   const toggleHome = () => {
@@ -37,12 +27,19 @@ const Footer = () => {
               .JPEG
             </SocialLogo>
             <WebsiteRights>.JPEG © 2021 ALL RIGHTS RESERVED.</WebsiteRights>
-              <SocialIconLink target='_blank' aria-label='Twitter' href='//www.twitter.com/jpegsquared'>
-              <FaTwitter />
-                <iconIcon src={openseaIcon} />
-              </SocialIconLink>
-              <SocialIconLink href='/' target='_blank' aria-label='Linkedin'>
-              </SocialIconLink>
+            <SocialMediaWrap>
+              <SocialIcons>
+                <SocialIconLink target='_blank' aria-label='Twitter' href='//www.twitter.com/jpegsquared'>
+                  <FaTwitter />
+                </SocialIconLink>
+                <SocialIconLink target='_blank' aria-label='Opensea' href='//opensea.io/collection/jpegmp'>
+                  <img src={openseaIcon} />
+                </SocialIconLink>
+                <SocialIconLink target='_blank' aria-label='Medium' href='//jpegsquared.medium.com/'>
+                  <FaMedium />
+                </SocialIconLink>
+              </SocialIcons>
+            </SocialMediaWrap>
       </FooterWrap>
     </FooterContainer>
   );

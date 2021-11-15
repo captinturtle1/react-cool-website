@@ -75,6 +75,19 @@ const Navbar = ({ toggle }) => {
                   About
                 </NavLinks>
               </NavItem>
+              <NavItem>
+                <NavLinks
+                  to='InfoArtist'
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact='true'
+                  offset={-80}
+                >
+                  Artist
+                </NavLinks>
+              </NavItem>
+              <NavItem></NavItem>
             </NavMenu>
             <NavBtn>
               {!account && <NavBtnLink onClick={activateBrowserWallet}> Connect </NavBtnLink>}
