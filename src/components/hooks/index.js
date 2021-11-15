@@ -1,4 +1,4 @@
-import { useContractCall, useContractFunction } from "@usedapp/core";
+/*import { useContractCall, useContractFunction } from "@usedapp/core";
 import { ethers } from "ethers";
 import { Contract } from "@ethersproject/contracts";
 import abi from '../abi.json'
@@ -15,4 +15,4 @@ const contract = new Contract(
 export function useContractMethod(methodName) {
     const { state, send } = useContractFunction(contract, methodName, {});
     return { state, send };
-}
+}*/

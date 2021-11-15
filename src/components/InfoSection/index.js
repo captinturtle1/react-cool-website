@@ -16,44 +16,29 @@ import {
   SocialIconLink
 } from './InfoElements';
 
-const InfoSection = ({
-  lightBg,
-  imgStart,
-  topLine,
-  lightText,
-  headline,
-  description,
-  buttonLabel,
-  img,
-  alt,
-  id,
-  primary,
-  darkText,
-  dark,
-  dark2
-}) => {
-  console.log(primary);
+const InfoSection = ({}) => {
+  console.log(false);
   return (
     <>
-      <InfoContainer lightBg={lightBg} id={id}>
+      <InfoContainer lightBg={true} id={'signup'}>
         <InfoWrapper>
-          <InfoRow imgStart={imgStart}>
+          <InfoRow imgStart={false}>
             <Column1>
               <TextWrapper>
-                <TopLine>{topLine}</TopLine>
-                <Heading lightText={lightText}>{headline}</Heading>
-                <Subtitle darkText={darkText}>{description}</Subtitle>
+                <TopLine>Join the Pack</TopLine>
+                <Heading lightText={false}>Community First</Heading>
+                <Subtitle darkText={true}>Our group is made up of members from all around the world who work together to ensure everyone is successful. In only 2 short months with only 100 community members, we have been able to amass several million dollars in profit as well as fund numerous community driven projects like the DAO and WOA.</Subtitle>
                 <BtnWrap>
                   <SocialIconLink
                     target='_blank' aria-label='Our Medium' href='//jpegsquared.medium.com'>
-                    {buttonLabel}
+                    Learn More
                   </SocialIconLink>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={img} alt={alt} />
+                <Img src={require('../../images/jpeg2Fancy.png')} />
               </ImgWrap>
             </Column2>
           </InfoRow>
