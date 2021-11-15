@@ -47,17 +47,6 @@ const Sidebar = ({ isOpen, toggle }) => {
           >
             About
           </SidebarLink>
-          <SidebarLink
-            to='InfoArtist'
-            onClick={toggle}
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact='true'
-            offset={-80}
-          >
-            Artist
-          </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
             {!account && <SidebarRoute onClick={activateBrowserWallet}> Connect </SidebarRoute>}

@@ -7,10 +7,7 @@ export const InfoContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 100px 0;
-    text-align: center;
   }
-
-  
 `;
 
 export const InfoWrapper = styled.div`
@@ -84,19 +81,11 @@ export const Subtitle = styled.p`
   font-size: 18px;
   line-height: 24px;
   color: #fff;
-
-  @media screen and (max-width: 768px) {
-    margin-left: 0px;
-  }
 `;
 
 export const BtnWrap = styled.div`
   display: flex;
   justify-content: right;
-  
-  @media screen and (max-width: 768px) {
-    justify-content: center;
-  }
 `;
 
 export const ImgWrap = styled.div`
