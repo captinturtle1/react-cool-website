@@ -34,7 +34,7 @@ const Services = () => {
   getAuctionBid();
 
   const calculateTimeLeft = () => {
-    let year = new Date('November 19, 21 4:51:00');
+    let year = new Date('November 19, 21 21:00:00');
     const difference = +new Date(`${year}-10-1`) - +new Date();
     let timeLeft = {};
 
@@ -82,9 +82,9 @@ const Services = () => {
             <ServicesH2>Time Left:</ServicesH2>
             <ServicesP>{timerComponents.length ? timerComponents : <span>Auction Over</span>}</ServicesP>
             <ServicesH2>Current Bid:</ServicesH2>
-            <ServicesP>{topBid} ETH</ServicesP>
+            <ServicesP> ?? </ServicesP>
               <Btn>
-                  <BtnLink target='_blank' aria-label='Place Bid' href='//testnets.opensea.io/assets/0x0f610844e2224c0b4b2dfbbc2d24ef9c398d7786/16'>Place a bid on OpenSea</BtnLink>
+                  <BtnLink>Not live yet</BtnLink>
               </Btn>
         </ServicesCard2>
         </ServicesWrapper>
@@ -94,3 +94,7 @@ const Services = () => {
 };
 
 export default Services;
+
+
+// <BtnLink target='_blank' aria-label='Place Bid' href='//testnets.opensea.io/assets/0x0f610844e2224c0b4b2dfbbc2d24ef9c398d7786/16'>Place a bid on OpenSea</BtnLink>
+// <ServicesP>{topBid} ETH</ServicesP>
