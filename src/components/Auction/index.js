@@ -26,7 +26,7 @@ const Services = () => {
   const [topBid, setTopBid] = useState(0);
 
   const getAuctionBid = () => {
-    fetch('https://testnets-api.opensea.io/api/v1/asset/0x79705b87d3f6788cf14b3713db7e0263a433e69d/16', options)
+    fetch('https://api.opensea.io/api/v1/asset/0x317F1aC96d965c86a79010327fBE40054A94Ed92/16', options)
   .then(response => response.json())
   .then(response => setTopBid(response.orders[0].current_price / 1000000000000000000))
   .catch(err => console.error(err));
@@ -80,11 +80,11 @@ const Services = () => {
           <ServicesIcon src={AuctionIcon} />
           <ServicesCard2>
             <ServicesH2>Time Left:</ServicesH2>
-            <ServicesP>{timerComponents.length ? timerComponents : <span>Auction Over</span>}</ServicesP>
+            <ServicesP>Not started.</ServicesP>
             <ServicesH2>Current Bid:</ServicesH2>
-            <ServicesP> ?? </ServicesP>
+            <ServicesP>{topBid} ETH</ServicesP>
               <Btn>
-                  <BtnLink>Not live yet</BtnLink>
+              <BtnLink>Coming soon.</BtnLink>
               </Btn>
         </ServicesCard2>
         </ServicesWrapper>
@@ -95,6 +95,5 @@ const Services = () => {
 
 export default Services;
 
-
-// <BtnLink target='_blank' aria-label='Place Bid' href='//testnets.opensea.io/assets/0x0f610844e2224c0b4b2dfbbc2d24ef9c398d7786/16'>Place a bid on OpenSea</BtnLink>
-// <ServicesP>{topBid} ETH</ServicesP>
+//<BtnLink target='_blank' aria-label='Place Bid' href='//opensea.io/assets/0x317F1aC96d965c86a79010327fBE40054A94Ed92/16'>Place a bid on OpenSea</BtnLink>
+//<ServicesP>{timerComponents.length ? timerComponents : <span>Auction Over</span>}</ServicesP>
