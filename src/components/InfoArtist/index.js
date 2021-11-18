@@ -34,7 +34,7 @@ const InfoSection = ({}) => {
                 <Subtitle>PZX is an independent artist from New Jersey with a passion for sketch art. His most predominant works feature mainly women and cat like animals each paying homage to his own signature style. If you would like to learn more about PDX and check out some of his work you can click the link below.</Subtitle>
                 <BtnWrap>
                   <SocialIconLink
-                    target='_blank' aria-label='Our Medium' href='//instagram.com/pzxworld/'>
+                    target='_blank' aria-label='Our Medium' href='//www.behance.net/PZX'>
                     Learn More
                   </SocialIconLink>
                 </BtnWrap>
