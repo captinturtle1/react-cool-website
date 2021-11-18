@@ -33,7 +33,7 @@ function HeroSection() {
           <HeroH1>The Wolfpack</HeroH1>
           <HeroSB>by PZXworld for .JPEG Season 3</HeroSB>
           <HeroP>
-           third collection and the first of our World of Art initiative is “The Wolfpack” by PZXworld. The collection is made up of 125 wolves all with their own different styles and traits and serves as the membership pass for our 3rd season. If you are on the whitelist, you can go ahead and mint a pass starting on Nov. 18th over a 24 hour period.
+           Our third collection and the first of our World of Art initiative is “The Wolfpack” by PZXworld. The collection is made up of 125 wolves all with their own different styles and traits and serves as the membership pass for our 3rd season. If you are on the whitelist, you can go ahead and mint a pass starting on Nov. 18th over a 24 hour period.
           </HeroP>
           <HeroBtnWrapper>
             <Button
