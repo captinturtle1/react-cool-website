@@ -26,7 +26,7 @@ const Sidebar = ({ isOpen, toggle }) => {
       <SidebarWrapper>
         <SidebarMenu>
         <SidebarLink
-            to='auction'
+            to='Auction'
             onClick={toggle}
             smooth={true}
             duration={500}

@@ -26,7 +26,7 @@ const Services = () => {
   const [topBid, setTopBid] = useState(0);
 
   const getAuctionBid = () => {
-    fetch('https://api.opensea.io/api/v1/asset/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9996', options)
+    fetch('https://testnets-api.opensea.io/api/v1/asset/0x79705b87d3f6788cf14b3713db7e0263a433e69d/16', options)
   .then(response => response.json())
   .then(response => setTopBid(response.orders[0].current_price / 1000000000000000000))
   .catch(err => console.error(err));
@@ -34,7 +34,7 @@ const Services = () => {
   getAuctionBid();
 
   const calculateTimeLeft = () => {
-    let year = new Date('November 18, 21 00:00:00');
+    let year = new Date('November 19, 21 4:51:00');
     const difference = +new Date(`${year}-10-1`) - +new Date();
     let timeLeft = {};
 
@@ -84,7 +84,7 @@ const Services = () => {
             <ServicesH2>Current Bid:</ServicesH2>
             <ServicesP>{topBid} ETH</ServicesP>
               <Btn>
-                  <BtnLink target='_blank' aria-label='Place Bid' href='//testnets.opensea.io/assets/0xe4a544fa2551f7d3bf5a9ced858b2d81c51fb56a/17'>Place a bid on OpenSea</BtnLink>
+                  <BtnLink target='_blank' aria-label='Place Bid' href='//testnets.opensea.io/assets/0x0f610844e2224c0b4b2dfbbc2d24ef9c398d7786/16'>Place a bid on OpenSea</BtnLink>
               </Btn>
         </ServicesCard2>
         </ServicesWrapper>
