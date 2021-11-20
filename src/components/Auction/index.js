@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AuctionIcon from '../../images/AuctionIcon.png';
+import AuctionIcon from '../../images/AuctionIcon.gif';
 import {
   ServicesContainer,
   ServicesH1,
@@ -26,7 +26,7 @@ const Services = () => {
   const [topBid, setTopBid] = useState(0);
 
   const getAuctionBid = () => {
-    fetch('https://api.opensea.io/api/v1/asset/0x317F1aC96d965c86a79010327fBE40054A94Ed92/16', options)
+    fetch('https://api.opensea.io/api/v1/asset/0x317F1aC96d965c86a79010327fBE40054A94Ed92/40', options)
   .then(response => response.json())
   .then(response => setTopBid(response.orders[0].current_price / 1000000000000000000))
   .catch(err => console.error(err));
@@ -34,7 +34,7 @@ const Services = () => {
   getAuctionBid();
 
   const calculateTimeLeft = () => {
-    let year = new Date('November 19, 21 21:00:00');
+    let year = new Date('November 21, 21 20:00:00');
     const difference = +new Date(`${year}-10-1`) - +new Date();
     let timeLeft = {};
 
@@ -80,11 +80,11 @@ const Services = () => {
           <ServicesIcon src={AuctionIcon} />
           <ServicesCard2>
             <ServicesH2>Time Left:</ServicesH2>
-            <ServicesP>Not started.</ServicesP>
+            <ServicesP>{timerComponents.length ? timerComponents : <span>Auction Over</span>}</ServicesP>
             <ServicesH2>Current Bid:</ServicesH2>
             <ServicesP>{topBid} ETH</ServicesP>
               <Btn>
-              <BtnLink>Coming soon.</BtnLink>
+              <BtnLink target='_blank' aria-label='Place Bid' href='//opensea.io/assets/0x317F1aC96d965c86a79010327fBE40054A94Ed92/40'>Place a bid on OpenSea</BtnLink>
               </Btn>
         </ServicesCard2>
         </ServicesWrapper>
@@ -94,6 +94,3 @@ const Services = () => {
 };
 
 export default Services;
-
-//<BtnLink target='_blank' aria-label='Place Bid' href='//opensea.io/assets/0x317F1aC96d965c86a79010327fBE40054A94Ed92/16'>Place a bid on OpenSea</BtnLink>
-//<ServicesP>{timerComponents.length ? timerComponents : <span>Auction Over</span>}</ServicesP>
