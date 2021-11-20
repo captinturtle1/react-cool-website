@@ -34,7 +34,7 @@ const Services = () => {
   getAuctionBid();
 
   const calculateTimeLeft = () => {
-    let year = new Date('November 21, 21 20:00:00');
+    let year = new Date('November 21, 21 19:00:00');
     const difference = +new Date(`${year}-10-1`) - +new Date();
     let timeLeft = {};
 
