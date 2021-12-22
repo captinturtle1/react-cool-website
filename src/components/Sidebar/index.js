@@ -25,17 +25,6 @@ const Sidebar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-        <SidebarLink
-            to='Auction'
-            onClick={toggle}
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact='true'
-            offset={-80}
-          >
-            Auction
-          </SidebarLink>
           <SidebarLink
             to='services'
             onClick={toggle}
@@ -57,17 +46,6 @@ const Sidebar = ({ isOpen, toggle }) => {
             offset={-80}
           >
             About
-          </SidebarLink>
-          <SidebarLink
-            to='InfoArtist'
-            onClick={toggle}
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact='true'
-            offset={-80}
-          >
-            Artist
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>

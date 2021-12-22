@@ -69,17 +69,17 @@ export const ServicesCard = styled.div`
 
 export const ServicesIcon = styled.img`
   padding-top: 0px;
-  height: 325px;
+  height: 300px;
   width: 300px;
   margin-bottom: 10px;
   
   @media screen and (max-width: 379px) {
     height: 243.75px;
-    width: 225px;
+    width: 243.75px;
   }
 
   @media screen and (max-width: 320px) {
-    height: 162.5px;
+    height: 150px;
     width: 150px;
   }
 `;

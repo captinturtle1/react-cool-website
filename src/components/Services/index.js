@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Icon4 from '../../images/regularPass.png';
 import Icon5 from '../../images/ogPass.png';
-import hidden from '../../images/hidden.png';
-import hiddenOG from '../../images/hiddenOG.png';
+import hidden from '../../images/hidden.gif';
+import hiddenOG from '../../images/hiddenOG.gif';
 import {
   ServicesContainer,
   ServicesH1,
@@ -112,9 +112,6 @@ const Services = () => {
 
   return (
     <ServicesContainer id='services'>
-      <HeroBg>
-        <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
-      </HeroBg>
       <ServicesH1>Mint your wolf.</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
@@ -174,9 +171,6 @@ const Services = () => {
             )}
         </ServicesCard>
       </ServicesWrapper>
-      <HeroBg>
-        <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
-      </HeroBg>
     </ServicesContainer>
   );
 };

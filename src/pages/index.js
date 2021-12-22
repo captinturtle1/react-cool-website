@@ -19,10 +19,8 @@ function Home() {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <HeroSection />
-      <Auction />
       <Services />
       <InfoSection />
-      <InfoArtist />
       <Footer />
     </>
   );

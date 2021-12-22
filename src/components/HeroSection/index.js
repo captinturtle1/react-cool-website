@@ -28,12 +28,11 @@ function HeroSection() {
       <HeroBg>
         <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
       </HeroBg>
-      <HeroContent3>
         <HeroContent>
-          <HeroH1>The Wolfpack</HeroH1>
-          <HeroSB>by PZXworld for .JPEG Season 3</HeroSB>
+          <HeroH1>Wolves by Georgi</HeroH1>
+          <HeroSB> .JPEG Season 4</HeroSB>
           <HeroP>
-           Our third collection and the first of our World of Art initiative is “The Wolfpack” by PZXworld. The collection is made up of 125 wolves all with their own different styles and traits and serves as the membership pass for our 3rd season. If you are on the whitelist, you can go ahead and mint a pass starting on Nov. 18th over a 24 hour period.
+          Wolves by Georgi is a collection of 125 wolves generated in varying styles. This marks the first NFT collection for GG and is in collaboration with .JPEG for the season 4 membership pass. Each pass grants holders access to the .JPEG community until January 25th, 2022.
           </HeroP>
           <HeroBtnWrapper>
             <Button
@@ -52,10 +51,6 @@ function HeroSection() {
             </Button>
           </HeroBtnWrapper>
         </HeroContent>
-        <HeroContent2>
-          <Img src={gridExample}/>
-        </HeroContent2>
-      </HeroContent3>
     </HeroContainer>
   );
 }
