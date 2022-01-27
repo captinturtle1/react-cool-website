@@ -7,7 +7,7 @@ let nftContract;
 
 let isInitialized = false;
 
-const contractAddress = "0x12721f4b9D971aAC9A2c9F9A15DdE086e82ad94F";
+const contractAddress = "0x188D180E8eC95f8250696F236235a539c38A2766";
 
 export const initWeb3 = async () => {
   let provider = window.ethereum;
