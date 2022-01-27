@@ -18,6 +18,7 @@ import {
 
 const InfoSection = ({}) => {
   console.log(false);
+  /*
   return (
     <>
       <InfoContainer id={'InfoArtist'}>
@@ -45,6 +46,7 @@ const InfoSection = ({}) => {
       </InfoContainer>
     </>
   );
+  */
 };
 
 export default InfoSection;

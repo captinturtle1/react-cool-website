@@ -27,7 +27,7 @@ const InfoSection = ({}) => {
               <TextWrapper>
                 <TopLine>Join the Pack</TopLine>
                 <Heading lightText={false}>Community First</Heading>
-                <Subtitle darkText={true}>Our group is made up of members from all around the world who work together to ensure everyone is successful. In only 2 short months with only 100 community members, we have been able to amass several million dollars in profit as well as fund numerous community driven projects like the DAO and WOA.</Subtitle>
+                <Subtitle darkText={true}>Our group is made up of members from all around the world who work together to ensure everyone is successful. In only a short period of time we have been able to amass over 5 million dollars in profit as well as fund numerous community driven projects like a DAO and the WOA initiative which helps up and coming artists.</Subtitle>
                 <BtnWrap>
                   <SocialIconLink
                     target='_blank' aria-label='Our Medium' href='//jpegsquared.medium.com'>

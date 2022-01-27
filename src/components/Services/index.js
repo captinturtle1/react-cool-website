@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Icon4 from '../../images/regularPass.png';
-import Icon5 from '../../images/ogPass.png';
 import hidden from '../../images/hidden.gif';
-import hiddenOG from '../../images/hiddenOG.gif';
 import {
   ServicesContainer,
   ServicesH1,
@@ -115,7 +112,7 @@ const Services = () => {
       <ServicesH1>Mint your wolf.</ServicesH1>
       <ServicesWrapper>
         <ServicesCard>
-          <ServicesIcon src={hiddenOG} />
+          <ServicesIcon src={hidden} />
           <ServicesH2>OG Pass</ServicesH2>
           <ServicesP>
             {OGbalance}/15 Minted 

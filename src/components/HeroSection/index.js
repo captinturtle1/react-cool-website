@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../ButtonElements';
 import Video from '../../videos/colorshift.mp4';
-import gridExample from '../../images/fronPageCoolPicture.png'
+//import gridExample from '../../images/fronPageCoolPicture.png'
 import {
   HeroContainer,
   HeroBg,
@@ -29,10 +29,10 @@ function HeroSection() {
         <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
       </HeroBg>
         <HeroContent>
-          <HeroH1>Wolves by Georgi</HeroH1>
-          <HeroSB> .JPEG Season 4</HeroSB>
+          <HeroH1>Pixel Wolves by Skylar</HeroH1>
+          <HeroSB> .JPEG Season 5</HeroSB>
           <HeroP>
-          Wolves by Georgi is a collection of 125 wolves generated in varying styles. This marks the first NFT collection for GG and is in collaboration with .JPEG for the season 4 membership pass. Each pass grants holders access to the .JPEG community until January 25th, 2022.
+          Pixel Wolves by Skylar is a collection of generative wolves made up of varying traits and rarities. Each trait was hand drawn by the artist and was made in collaboration with .JPEG Squared for their season 5 membership pass. Each wolf grants access to the .JPEG Squared community until February 28, 2022.
           </HeroP>
           <HeroBtnWrapper>
             <Button

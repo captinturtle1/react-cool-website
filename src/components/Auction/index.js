@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AuctionIcon from '../../images/AuctionIcon.gif';
+// import AuctionIcon from '../../images/AuctionIcon.gif';
 import {
   ServicesContainer,
   ServicesH1,
@@ -72,6 +72,7 @@ const Services = () => {
     );
   });
   
+  /*
   return (
     <ServicesContainer id='Auction'>
       <ServicesH1>Auction</ServicesH1>
@@ -91,6 +92,7 @@ const Services = () => {
       </ServicesCard>
     </ServicesContainer>
   );
+  */
 };
 
 export default Services;
