@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import hidden from '../../images/hidden.gif';
+import hidden from '../../images/mintIcon.gif';
+import hidden2 from '../../images/mintIcon2.gif';
 import {
   ServicesContainer,
   ServicesH1,
@@ -16,18 +17,17 @@ import {
   HeroBg,
   VideoBg
 } from './ServicesElements';
-import { checkIfPaused, getCurrentOgMintPassCount, getCurrentRegularMintPassCount, checkIfMinted, checkIfIsOG, checkIfIsWhitelisted, mintToken, mintTokenOG } from '../web3Client'
-import Video from '../../videos/colorshift.mp4';
+import { checkIfPaused, getCurrentRegularMintPassCount, checkIfMintedRegular, checkIfMintedOG, checkIfIsOG, checkIfIsWhitelisted, mintToken, mintTokenOG } from '../web3Client'
 
 
 const Services = () => {
 
   const [saleStatus, setSaleStatus] = useState(0);
-  const [OGbalance, setOGBalance] = useState(0);
   const [REGULARbalance, setRegularBalance] = useState(0);
   const [hasMinted, setHasMinted] = useState(0);
   const [isAddressOG, setIsAddressOG] = useState(false);
   const [isAddressWhitelisted, setIsAddressWhitelisted] = useState(false);
+  const [runUpdateFunctions, setRunUpdateFunctions] = useState(true);
   
 
 
@@ -38,34 +38,53 @@ const Services = () => {
       console.log(err);
     })
   }
-  isSaleLive();
 
   const isOG = () => {
     checkIfIsOG().then(isAddressOG => {
-      setIsAddressOG(isAddressOG);
+      if (isAddressOG > 0) {
+        setIsAddressOG(true);
+        console.log(`address is og`);
+        return;
+      }
+      setIsAddressOG(false);
+      console.log(`address is not og`);
     }).catch((err) => {
       console.log(err);
     })
   }
-  isOG();
 
   const isWhitelisted = () => {
     checkIfIsWhitelisted().then(isAddressWhitelisted => {
-      setIsAddressWhitelisted(isAddressWhitelisted);
+      if (isAddressWhitelisted > 0) {
+        setIsAddressWhitelisted(true);
+        console.log(`address is whitelisted`);
+        return;
+      }
+      setIsAddressWhitelisted(false);
+      console.log(`address is not whitelisted`);
     }).catch((err) => {
       console.log(err);
     })
   }
-  isWhitelisted();
 
   const getHasMinted = () => {
-    checkIfMinted().then(hasMinted => {
-      setHasMinted(hasMinted);
+    checkIfMintedRegular().then(hasMinted => {
+      if (hasMinted > 0) {
+        setHasMinted(true);
+        console.log(`has minted regular pass`);
+        return;
+      }
+      if (hasMinted > 0) {
+        setHasMinted(true);
+        console.log(`has minted OG pass`);
+        return;
+      }
+      setHasMinted(false);
+      console.log(`has not minted regular pass`);
     }).catch((err) => {
       console.log(err);
     })
   }
-  getHasMinted();
   
   const mint = () => {
     mintToken().then(tx => {
@@ -85,27 +104,26 @@ const Services = () => {
     })
   }
 
-  const fetchOGBalance = () => [
-    getCurrentOgMintPassCount().then(OGbalance => {
-      setOGBalance(OGbalance);
-      console.log("fetchingOGBalance");
-    }).catch(err => {
-      console.log(err);
-    })
-  ]
-  fetchOGBalance();
-
-  const fetchRegularBalance = () => [
+  const fetchRegularBalance = () => {
     getCurrentRegularMintPassCount().then(REGULARbalance => {
       setRegularBalance(REGULARbalance);
-      console.log("fetchingBalance");
     }).catch(err => {
       console.log(err);
     })
-  ]
-  fetchRegularBalance();
+  }
 
-  
+  const functionUpdates = () => {
+    if (runUpdateFunctions == true) {
+      setRunUpdateFunctions(false);
+      isSaleLive();
+      isOG();
+      isWhitelisted();
+      getHasMinted();
+      fetchRegularBalance();
+    }
+  }
+  functionUpdates();
+  console.log("loop!");
 
   return (
     <ServicesContainer id='services'>
@@ -113,11 +131,11 @@ const Services = () => {
       <ServicesWrapper>
         <ServicesCard>
           <ServicesIcon src={hidden} />
-          <ServicesH2>OG Pass</ServicesH2>
+          <ServicesH2>OG Mint</ServicesH2>
           <ServicesP>
-            {OGbalance}/15 Minted 
+            {REGULARbalance}/150 Minted 
           </ServicesP>
-          {!saleStatus ? (
+          {saleStatus ? (
           <ghost>
           {!hasMinted ? (
             <Btn>
@@ -140,12 +158,12 @@ const Services = () => {
           )}
         </ServicesCard>
         <ServicesCard>
-          <ServicesIcon src={hidden} />
-          <ServicesH2>Regular Pass</ServicesH2>
+          <ServicesIcon src={hidden2} />
+          <ServicesH2>Regular Mint</ServicesH2>
           <ServicesP>
-            {REGULARbalance}/110 Minted
+            {REGULARbalance}/150 Minted
           </ServicesP>
-          {!saleStatus ? (
+          {saleStatus ? (
           <ghost>
           {!hasMinted ? (
             <Btn>

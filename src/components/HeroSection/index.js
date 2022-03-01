@@ -29,10 +29,10 @@ function HeroSection() {
         <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
       </HeroBg>
         <HeroContent>
-          <HeroH1>Pixel Wolves by Skylar</HeroH1>
-          <HeroSB> .JPEG Season 5</HeroSB>
+          <HeroH1>Metapack by Liam</HeroH1>
+          <HeroSB>.JPEG Season 5</HeroSB>
           <HeroP>
-          Pixel Wolves by Skylar is a collection of generative wolves made up of varying traits and rarities. Each trait was hand drawn by the artist and was made in collaboration with .JPEG Squared for their season 5 membership pass. Each wolf grants access to the .JPEG Squared community until February 28, 2022.
+          .JPEG Squared is excited to announce our fourth collaborative partnership under the World Of Art umbrella. We decided to work with an up and coming artist out of The Netherlands on a piece that would represent our sixth season. Deviating from the norm, this collection will be one single NFT dubbed "Metapack" and will represent the membership pass for season 6 along with a rendition created by the artist with inspiration taken from the Metakeys collections. Each NFT grants the owner access to our discord community and serves as a membership pass until the end of the season at which time the collection will transition from a membership pass to its own standalone collection. Each membership comes with access to our investment community, drop schedules, calls, support, giveaways, monitors and more. Please note that the royalties on all secondary sales go directly to the artist.
           </HeroP>
           <HeroBtnWrapper>
             <Button

@@ -17,7 +17,6 @@ import {
 } from './InfoElements';
 
 const InfoSection = ({}) => {
-  console.log(false);
   return (
     <>
       <InfoContainer lightBg={true} id={'signup'}>

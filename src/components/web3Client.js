@@ -7,7 +7,7 @@ let nftContract;
 
 let isInitialized = false;
 
-const contractAddress = "0x188D180E8eC95f8250696F236235a539c38A2766";
+const contractAddress = "0x3F22f2f5397fbb86B14ecA4927410e38B9B12060";
 
 export const initWeb3 = async () => {
   let provider = window.ethereum;
@@ -39,15 +39,23 @@ export const checkIfPaused = async () => {
   if (!isInitialized) {
     await initWeb3();
   }
-  let isPaused = nftContract.methods.paused().call();
+  let isPaused = nftContract.methods.hasPrivateSaleStarted().call();
   return isPaused;
 };
 
-export const checkIfMinted = async () => {
+export const checkIfMintedRegular = async () => {
   if (!isInitialized) {
     await initWeb3();
   }
-  let hasMinted = nftContract.methods.alreadyMinted(selectedAccount).call();
+  let hasMinted = nftContract.methods.balanceOf(selectedAccount, 1).call();
+  return hasMinted;
+};
+
+export const checkIfMintedOG = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let hasMinted = nftContract.methods.balanceOf(selectedAccount, 2).call();
   return hasMinted;
 };
 
@@ -55,7 +63,7 @@ export const checkIfIsOG = async () => {
   if (!isInitialized) {
     await initWeb3();
   }
-  let isOG = nftContract.methods.isOG(selectedAccount).call();
+  let isOG = nftContract.methods._ogList(selectedAccount).call();
   return isOG;
 
 };
@@ -64,23 +72,15 @@ export const checkIfIsWhitelisted = async () => {
   if (!isInitialized) {
     await initWeb3();
   }
-  let isWhitelisted = nftContract.methods.isWhitelisted(selectedAccount).call();
+  let isWhitelisted = nftContract.methods._regularList(selectedAccount).call();
   return isWhitelisted;
-};
-
-export const getCurrentOgMintPassCount = async () => {
-    if (!isInitialized) {
-      await initWeb3();
-    }
-    let supply = nftContract.methods.currentOGSupply().call();
-    return supply;
 };
 
 export const getCurrentRegularMintPassCount = async () => {
   if (!isInitialized) {
     await initWeb3();
   }
-  let supply = nftContract.methods.currentRegularSupply().call();
+  let supply = nftContract.methods.CLAIMED_PASSES().call();
   return supply;
 };
 
@@ -88,12 +88,12 @@ export const mintToken = async () => {
     if (!isInitialized) {
       await initWeb3();
     }
-    return nftContract.methods.mint(1).send({ from: selectedAccount, value: 80000000000000000 });
+    return nftContract.methods.regularMint().send({ from: selectedAccount, value: 80000000000000000 });
 };
 
 export const mintTokenOG = async () => {
     if (!isInitialized) {
         await initWeb3();
     }
-    return nftContract.methods.mintOG(1).send({ from: selectedAccount, value: 40000000000000000});
+    return nftContract.methods.ogMint().send({ from: selectedAccount, value: 40000000000000000});
 };
