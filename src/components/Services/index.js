@@ -142,7 +142,7 @@ const Services = () => {
               {isAddressOG ? (
                 <BtnLink onClick={() => mintOG()}>Mint (0.04)</BtnLink>)
               : (
-                <BtnButNotButton>Not OG</BtnButNotButton>
+                <BtnButNotButton>No pass to claim</BtnButNotButton>
               )}
             </Btn>
           ) : (
@@ -170,7 +170,7 @@ const Services = () => {
               {isAddressWhitelisted ? (
                 <BtnLink onClick={() => mint()}>Mint (0.08)</BtnLink>)
               : (
-                <BtnButNotButton>Not Whitelisted</BtnButNotButton>
+                <BtnButNotButton>No pass to claim</BtnButNotButton>
               )}
             </Btn>
           ) : (
