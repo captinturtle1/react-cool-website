@@ -1,13 +1,16 @@
 import Web3 from 'web3';
 import NFTContractBuild from './abi.json'
+import OldNFTContractBuild from './oldAbi.json'
 
 let selectedAccount;
 
 let nftContract;
+let oldNftContract;
 
 let isInitialized = false;
 
-const contractAddress = "0x3F22f2f5397fbb86B14ecA4927410e38B9B12060";
+const contractAddress = "0xF8207bcFEf4cC5DFD711545275b94e1bf17Ca0dE";
+const oldContractAddress = "0x3f22f2f5397fbb86b14eca4927410e38b9b12060";
 
 export const initWeb3 = async () => {
   let provider = window.ethereum;
@@ -32,8 +35,24 @@ export const initWeb3 = async () => {
   const networkId = await web3.eth.net.getId();
   
   nftContract = new web3.eth.Contract(NFTContractBuild, contractAddress);
+  oldNftContract = new web3.eth.Contract(OldNFTContractBuild, oldContractAddress);
   isInitialized = true;
 }
+
+export const approveNewContractOnOld = async () => {
+  if (!isInitialized) {
+      await initWeb3();
+  }
+  return oldNftContract.methods.setApprovalForAll(contractAddress, true).send({ from: selectedAccount });
+};
+
+export const checkIfApprovedForAll = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let approval = oldNftContract.methods.isApprovedForAll(selectedAccount, contractAddress).call();
+  return approval;
+};
 
 export const checkIfPaused = async () => {
   if (!isInitialized) {
@@ -41,6 +60,14 @@ export const checkIfPaused = async () => {
   }
   let isPaused = nftContract.methods.hasPrivateSaleStarted().call();
   return isPaused;
+};
+
+export const checkIfClaimSaleStarted = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let claimSaleStarted = nftContract.methods.hasClaimSaleStarted().call();
+  return claimSaleStarted;
 };
 
 export const checkIfMintedRegular = async () => {
@@ -51,11 +78,29 @@ export const checkIfMintedRegular = async () => {
   return hasMinted;
 };
 
+
 export const checkIfMintedOG = async () => {
   if (!isInitialized) {
     await initWeb3();
   }
   let hasMinted = nftContract.methods.balanceOf(selectedAccount, 2).call();
+  return hasMinted;
+};
+
+export const checkIfMintedRegularOLD = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let hasMinted = oldNftContract.methods.balanceOf(selectedAccount, 1).call();
+  return hasMinted;
+};
+
+
+export const checkIfMintedOGOLD = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let hasMinted = oldNftContract.methods.balanceOf(selectedAccount, 2).call();
   return hasMinted;
 };
 
@@ -84,6 +129,14 @@ export const getCurrentRegularMintPassCount = async () => {
   return supply;
 };
 
+export const getCurrentOGMintPassCount = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  let supply = nftContract.methods.CLAIMED_OG_PASSES().call();
+  return supply;
+};
+
 export const mintToken = async () => {
     if (!isInitialized) {
       await initWeb3();
@@ -96,4 +149,18 @@ export const mintTokenOG = async () => {
         await initWeb3();
     }
     return nftContract.methods.ogMint().send({ from: selectedAccount, value: 40000000000000000});
+};
+
+export const mintWithPass = async () => {
+  if (!isInitialized) {
+    await initWeb3();
+  }
+  return nftContract.methods.mintWithPass().send({ from: selectedAccount, value: 80000000000000000 });
+};
+
+export const mintWithPassOG = async () => {
+  if (!isInitialized) {
+      await initWeb3();
+  }
+  return nftContract.methods.mintWithPassOG().send({ from: selectedAccount, value: 40000000000000000});
 };

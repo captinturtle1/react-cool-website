@@ -17,17 +17,41 @@ import {
   HeroBg,
   VideoBg
 } from './ServicesElements';
-import { checkIfPaused, getCurrentRegularMintPassCount, checkIfMintedRegular, checkIfMintedOG, checkIfIsOG, checkIfIsWhitelisted, mintToken, mintTokenOG } from '../web3Client'
+import {
+  approveNewContractOnOld,
+  checkIfApprovedForAll,
+  checkIfPaused,
+  checkIfClaimSaleStarted,
+  getCurrentRegularMintPassCount,
+  getCurrentOGMintPassCount,
+  checkIfMintedRegular,
+  checkIfMintedOG,
+  checkIfMintedRegularOLD,
+  checkIfMintedOGOLD,
+  checkIfIsOG,
+  checkIfIsWhitelisted,
+  mintToken,
+  mintTokenOG,
+  mintWithPass,
+  mintWithPassOG
+} from '../web3Client'
 
 
 const Services = () => {
 
-  const [saleStatus, setSaleStatus] = useState(0);
+  const [saleStatus, setSaleStatus] = useState(false);
+  const [claimStatus, setClaimStatus] = useState(false);
   const [REGULARbalance, setRegularBalance] = useState(0);
-  const [hasMinted, setHasMinted] = useState(0);
+  const [OGbalance, setOGBalance] = useState(0);
+  const [hasMinted, setHasMinted] = useState(false);
+  const [hasMintedOG, setHasMintedOG] = useState(false);
+  const [hasMintedOLD, setHasMintedOLD] = useState(false);
+  const [hasMintedOGOLD, setHasMintedOGOLD] = useState(false);
   const [isAddressOG, setIsAddressOG] = useState(false);
   const [isAddressWhitelisted, setIsAddressWhitelisted] = useState(false);
   const [runUpdateFunctions, setRunUpdateFunctions] = useState(true);
+  const [isClaimTabOpen, setIsClaimTabOpen] = useState(true);
+  const [isApprovalSet, setIsApprovalSet] = useState(false);
   
 
 
@@ -39,10 +63,19 @@ const Services = () => {
     })
   }
 
+  const isClaimLive = () => {
+    checkIfClaimSaleStarted().then(claimStatus => {
+      setClaimStatus(claimStatus);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
   const isOG = () => {
     checkIfIsOG().then(isAddressOG => {
       if (isAddressOG > 0) {
         setIsAddressOG(true);
+        setIsClaimTabOpen(false);
         console.log(`address is og`);
         return;
       }
@@ -57,6 +90,7 @@ const Services = () => {
     checkIfIsWhitelisted().then(isAddressWhitelisted => {
       if (isAddressWhitelisted > 0) {
         setIsAddressWhitelisted(true);
+        setIsClaimTabOpen(false);
         console.log(`address is whitelisted`);
         return;
       }
@@ -69,18 +103,51 @@ const Services = () => {
 
   const getHasMinted = () => {
     checkIfMintedRegular().then(hasMinted => {
+      console.log(`has minted ${hasMinted} regular pass`);
       if (hasMinted > 0) {
         setHasMinted(true);
-        console.log(`has minted regular pass`);
-        return;
-      }
-      if (hasMinted > 0) {
-        setHasMinted(true);
-        console.log(`has minted OG pass`);
         return;
       }
       setHasMinted(false);
-      console.log(`has not minted regular pass`);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const getHasMintedOG = () => {
+    checkIfMintedOG().then(hasMintedOG => {
+      console.log(`has minted ${hasMintedOG} OG pass`);
+      if (hasMintedOG > 0) {
+        setHasMintedOG(true);
+        return;
+      }
+      setHasMinted(false);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const getHasMintedOLD = () => {
+    checkIfMintedRegularOLD().then(hasMintedOLD => {
+      console.log(`has minted ${hasMintedOLD} OLD regular pass`);
+      if (hasMintedOLD > 0) {
+        setHasMintedOLD(true);
+        return;
+      }
+      setHasMintedOLD(false);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const getHasMintedOGOLD = () => {
+    checkIfMintedOGOLD().then(hasMintedOGOLD => {
+      console.log(`has minted ${hasMintedOGOLD} OLD OG pass`);
+      if (hasMintedOGOLD > 0) {
+        setHasMintedOGOLD(true);
+        return;
+      }
+      setHasMintedOGOLD(false);
     }).catch((err) => {
       console.log(err);
     })
@@ -89,6 +156,8 @@ const Services = () => {
   const mint = () => {
     mintToken().then(tx => {
       console.log(tx);
+      setRunUpdateFunctions(true);
+      functionUpdates();
     })
     .catch((err) => {
       console.log(err);
@@ -98,15 +167,70 @@ const Services = () => {
   const mintOG = () => {
     mintTokenOG().then(tx => {
       console.log(tx);
+      setRunUpdateFunctions(true);
+      functionUpdates();
     })
     .catch((err) => {
       console.log(err);
     })
   }
 
+  const mintWPass = () => {
+    mintWithPass().then(tx => {
+      console.log(tx);
+      setRunUpdateFunctions(true);
+      functionUpdates();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const mintWPassOG = () => {
+    mintWithPassOG().then(tx => {
+      console.log(tx);
+      setRunUpdateFunctions(true);
+      functionUpdates();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const setApprovalOnOldContract = () => {
+    approveNewContractOnOld().then(tx => {
+      console.log(tx);
+      setRunUpdateFunctions(true);
+      functionUpdates();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const fetchIfIsApprovalForAllIsTrue = () => {
+    checkIfApprovedForAll().then(isApprovalSet => {
+      setIsApprovalSet(isApprovalSet);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
   const fetchRegularBalance = () => {
     getCurrentRegularMintPassCount().then(REGULARbalance => {
-      setRegularBalance(REGULARbalance);
+      getCurrentOGMintPassCount().then(OGbalance => {
+        setRegularBalance(REGULARbalance - OGbalance);
+      }).catch(err => {
+        console.log(err);
+      })
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  const fetchOGBalance = () => {
+    getCurrentOGMintPassCount().then(OGbalance => {
+      setOGBalance(OGbalance);
     }).catch(err => {
       console.log(err);
     })
@@ -119,7 +243,13 @@ const Services = () => {
       isOG();
       isWhitelisted();
       getHasMinted();
+      getHasMintedOG();
+      getHasMintedOLD();
+      getHasMintedOGOLD();
       fetchRegularBalance();
+      fetchOGBalance();
+      isClaimLive();
+      fetchIfIsApprovalForAllIsTrue();
     }
   }
   functionUpdates();
@@ -128,29 +258,89 @@ const Services = () => {
   return (
     <ServicesContainer id='services'>
       <ServicesH1>Mint your wolf.</ServicesH1>
+      {isClaimTabOpen ? (
       <ServicesWrapper>
         <ServicesCard>
           <ServicesIcon src={hidden} />
           <ServicesH2>OG Mint</ServicesH2>
           <ServicesP>
-            {REGULARbalance}/150 Minted 
+            {OGbalance}/16 Minted 
           </ServicesP>
-          {saleStatus ? (
-          <ghost>
-          {!hasMinted ? (
-            <Btn>
-              {isAddressOG ? (
-                <BtnLink onClick={() => mintOG()}>Mint (0.04)</BtnLink>)
-              : (
-                <BtnButNotButton>No pass to claim</BtnButNotButton>
+          {claimStatus ? (
+            <ghost>
+              {hasMintedOGOLD ? (
+                <Btn>
+                  {isApprovalSet ? (
+                    <BtnLink onClick={() => mintWPassOG()}>Mint (0.04)</BtnLink>
+                  ) : (
+                    <BtnLink onClick={() => setApprovalOnOldContract()}>Set Approval</BtnLink>
+                  )}
+                </Btn>
+              ) : (
+                <Btn>
+                  <BtnButNotButton>No pass to burn</BtnButNotButton>
+                </Btn>
               )}
-            </Btn>
+            </ghost>
           ) : (
             <Btn>
-              <BtnButNotButton>Minted</BtnButNotButton>
+              <BtnButNotButton>Not Live</BtnButNotButton>
             </Btn>
           )}
-          </ghost>
+        </ServicesCard>
+        <ServicesCard>
+          <ServicesIcon src={hidden2} />
+          <ServicesH2>Regular Mint</ServicesH2>
+          <ServicesP>
+            {REGULARbalance}/134 Minted
+          </ServicesP>
+          {claimStatus ? (
+            <ghost>
+              {hasMintedOLD ? (
+                <Btn>
+                  {isApprovalSet ? (
+                    <BtnLink onClick={() => mintWPass()}>Mint (0.08)</BtnLink>
+                  ) : (
+                    <BtnLink onClick={() => setApprovalOnOldContract()}>Set Approval</BtnLink>
+                  )}
+                </Btn>
+              ) : (
+                <Btn>
+                  <BtnButNotButton>No pass to burn</BtnButNotButton>
+                </Btn>
+              )}
+            </ghost>
+          ) : (
+            <Btn>
+              <BtnButNotButton>Not Live</BtnButNotButton>
+            </Btn>
+            )}
+        </ServicesCard>
+      </ServicesWrapper>
+      ) : (
+      <ServicesWrapper>
+        <ServicesCard>
+          <ServicesIcon src={hidden} />
+          <ServicesH2>OG Mint</ServicesH2>
+          <ServicesP>
+            {OGbalance}/16 Minted 
+          </ServicesP>
+          {saleStatus ? (
+            <ghost>
+              {!hasMinted ? (
+                <Btn>
+                  {isAddressOG ? (
+                    <BtnLink onClick={() => mintOG()}>Mint (0.04)</BtnLink>
+                  ) : (
+                    <BtnButNotButton>Not on Whitelist</BtnButNotButton>
+                  )}
+                </Btn>
+              ) : (
+                <Btn>
+                  <BtnButNotButton>Minted</BtnButNotButton>
+                </Btn>
+              )}
+            </ghost>
           ) : (
             <Btn>
               <BtnButNotButton>Not Live</BtnButNotButton>
@@ -164,21 +354,21 @@ const Services = () => {
             {REGULARbalance}/150 Minted
           </ServicesP>
           {saleStatus ? (
-          <ghost>
-          {!hasMinted ? (
-            <Btn>
-              {isAddressWhitelisted ? (
-                <BtnLink onClick={() => mint()}>Mint (0.08)</BtnLink>)
-              : (
-                <BtnButNotButton>No pass to claim</BtnButNotButton>
+            <ghost>
+              {!hasMintedOG ? (
+                <Btn>
+                  {isAddressWhitelisted ? (
+                    <BtnLink onClick={() => mint()}>Mint (0.08)</BtnLink>
+                  ) : (
+                    <BtnButNotButton>Not on Whitelist</BtnButNotButton>
+                  )}
+                </Btn>
+              ) : (
+                <Btn>
+                  <BtnButNotButton>Minted</BtnButNotButton>
+                </Btn>
               )}
-            </Btn>
-          ) : (
-            <Btn>
-              <BtnButNotButton>Minted</BtnButNotButton>
-            </Btn>
-          )}
-          </ghost>
+            </ghost>
           ) : (
             <Btn>
               <BtnButNotButton>Not Live</BtnButNotButton>
@@ -186,6 +376,7 @@ const Services = () => {
             )}
         </ServicesCard>
       </ServicesWrapper>
+      )}
     </ServicesContainer>
   );
 };
