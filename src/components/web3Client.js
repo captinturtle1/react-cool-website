@@ -9,8 +9,8 @@ let oldNftContract;
 
 let isInitialized = false;
 
-const contractAddress = "0xF8207bcFEf4cC5DFD711545275b94e1bf17Ca0dE";
-const oldContractAddress = "0x3f22f2f5397fbb86b14eca4927410e38b9b12060";
+const contractAddress = "0xd8544E4d184b6d7bae36999897298bC9692b871b";
+const oldContractAddress = "0xf8207bcfef4cc5dfd711545275b94e1bf17ca0de";
 
 export const initWeb3 = async () => {
   let provider = window.ethereum;
@@ -39,20 +39,7 @@ export const initWeb3 = async () => {
   isInitialized = true;
 }
 
-export const approveNewContractOnOld = async () => {
-  if (!isInitialized) {
-      await initWeb3();
-  }
-  return oldNftContract.methods.setApprovalForAll(contractAddress, true).send({ from: selectedAccount });
-};
 
-export const checkIfApprovedForAll = async () => {
-  if (!isInitialized) {
-    await initWeb3();
-  }
-  let approval = oldNftContract.methods.isApprovedForAll(selectedAccount, contractAddress).call();
-  return approval;
-};
 
 export const checkIfPaused = async () => {
   if (!isInitialized) {

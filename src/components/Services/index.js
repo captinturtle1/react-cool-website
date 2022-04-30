@@ -18,8 +18,6 @@ import {
   VideoBg
 } from './ServicesElements';
 import {
-  approveNewContractOnOld,
-  checkIfApprovedForAll,
   checkIfPaused,
   checkIfClaimSaleStarted,
   getCurrentRegularMintPassCount,
@@ -197,25 +195,6 @@ const Services = () => {
     })
   }
 
-  const setApprovalOnOldContract = () => {
-    approveNewContractOnOld().then(tx => {
-      console.log(tx);
-      setRunUpdateFunctions(true);
-      functionUpdates();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-
-  const fetchIfIsApprovalForAllIsTrue = () => {
-    checkIfApprovedForAll().then(isApprovalSet => {
-      setIsApprovalSet(isApprovalSet);
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-
   const fetchRegularBalance = () => {
     getCurrentRegularMintPassCount().then(REGULARbalance => {
       getCurrentOGMintPassCount().then(OGbalance => {
@@ -249,7 +228,6 @@ const Services = () => {
       fetchRegularBalance();
       fetchOGBalance();
       isClaimLive();
-      fetchIfIsApprovalForAllIsTrue();
     }
   }
   functionUpdates();
@@ -270,11 +248,7 @@ const Services = () => {
             <ghost>
               {hasMintedOGOLD ? (
                 <Btn>
-                  {isApprovalSet ? (
-                    <BtnLink onClick={() => mintWPassOG()}>Mint (0.04)</BtnLink>
-                  ) : (
-                    <BtnLink onClick={() => setApprovalOnOldContract()}>Set Approval</BtnLink>
-                  )}
+                  <BtnLink onClick={() => mintWPassOG()}>Mint (0.04)</BtnLink>
                 </Btn>
               ) : (
                 <Btn>
@@ -298,11 +272,7 @@ const Services = () => {
             <ghost>
               {hasMintedOLD ? (
                 <Btn>
-                  {isApprovalSet ? (
-                    <BtnLink onClick={() => mintWPass()}>Mint (0.08)</BtnLink>
-                  ) : (
-                    <BtnLink onClick={() => setApprovalOnOldContract()}>Set Approval</BtnLink>
-                  )}
+                  <BtnLink onClick={() => mintWPass()}>Mint (0.08)</BtnLink>
                 </Btn>
               ) : (
                 <Btn>

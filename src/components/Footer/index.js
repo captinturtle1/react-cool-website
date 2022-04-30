@@ -32,7 +32,7 @@ const Footer = () => {
                 <SocialIconLink target='_blank' aria-label='Twitter' href='//www.twitter.com/jpegsquared'>
                   <FaTwitter />
                 </SocialIconLink>
-                <SocialIconLink target='_blank' aria-label='Opensea' href='//opensea.io/collection/jpegmp7'>
+                <SocialIconLink target='_blank' aria-label='Opensea' href='//opensea.io/collection/jpegmp8'>
                   <img src={openseaIcon} />
                 </SocialIconLink>
                 <SocialIconLink target='_blank' aria-label='Medium' href='//jpegsquared.medium.com/'>
