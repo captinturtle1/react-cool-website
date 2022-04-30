@@ -29,10 +29,10 @@ function HeroSection() {
         <VideoBg playsInline autoPlay loop muted src={Video} type='video/mp4' />
       </HeroBg>
         <HeroContent>
-          <HeroH1>Metapack by Liam</HeroH1>
-          <HeroSB>.JPEG Season 8</HeroSB>
+          <HeroH1>.JPEG Squared Alpha</HeroH1>
+          <HeroSB>Season 8</HeroSB>
           <HeroP>
-          .JPEG Squared is excited to announce our fourth collaborative partnership under the World Of Art umbrella. We decided to work with an up and coming artist out of The Netherlands on a piece that would represent our sixth season. Deviating from the norm, this collection will be one single NFT dubbed "Metapack" and will represent the membership pass for season 6 along with a rendition created by the artist with inspiration taken from the Metakeys collections. Each NFT grants the owner access to our discord community and serves as a membership pass until the end of the season at which time the collection will transition from a membership pass to its own standalone collection. Each membership comes with access to our investment community, drop schedules, calls, support, giveaways, monitors and more. Please note that the royalties on all secondary sales go directly to the artist.
+          We are proud to announce our 8th season under the JPEG Squared banner. In order to gain access to our exclusive alpha community you will need to mint a membership pass below by burning a season 7 membership pass. These NFT passes grant access to our discord community and serve as a membership pass until the end of the season at which time the collection will be burned to gain access to the following season. Each membership comes with access to our investment community, drop calendar, calls, support, tools, monitors, giveaways and much more. Please not that the royalties on secondary sales go back to the artist who designed the seasonal passes.
           </HeroP>
           <HeroBtnWrapper>
             <Button
