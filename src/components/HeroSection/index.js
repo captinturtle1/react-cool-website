@@ -18,6 +18,8 @@ import {
   Img
 } from './HeroElements';
 
+import { currentSeasonNumber, currentSeasonOrdinal } from '../stuffThatChangesEverySeason';
+
 function HeroSection() {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -30,9 +32,9 @@ function HeroSection() {
       </HeroBg>
         <HeroContent>
           <HeroH1>.JPEG Squared Alpha</HeroH1>
-          <HeroSB>Season 8</HeroSB>
+          <HeroSB>Season {currentSeasonNumber}</HeroSB>
           <HeroP>
-          We are proud to announce our 8th season under the JPEG Squared banner. In order to gain access to our exclusive alpha community you will need to mint a membership pass below by burning a season 7 membership pass. These NFT passes grant access to our discord community and serve as a membership pass until the end of the season at which time the collection will be burned to gain access to the following season. Each membership comes with access to our investment community, drop calendar, calls, support, tools, monitors, giveaways and much more. Please not that the royalties on secondary sales go back to the artist who designed the seasonal passes.
+          We are proud to announce our {currentSeasonNumber}{currentSeasonOrdinal} season under the JPEG Squared banner. In order to gain access to our exclusive alpha community you will need to mint a membership pass below by burning a season {currentSeasonNumber - 1} membership pass. These NFT passes grant access to our discord community and serve as a membership pass until the end of the season at which time the collection will be burned to gain access to the following season. Each membership comes with access to our investment community, drop calendar, calls, support, tools, monitors, giveaways and much more. Please not that the royalties on secondary sales go back to the artist who designed the seasonal passes.
           </HeroP>
           <HeroBtnWrapper>
             <Button

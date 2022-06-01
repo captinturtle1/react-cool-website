@@ -1,6 +1,7 @@
 import Web3 from 'web3';
 import NFTContractBuild from './abi.json'
 import OldNFTContractBuild from './oldAbi.json'
+import { contractAddress, oldContractAddress } from './stuffThatChangesEverySeason';
 
 let selectedAccount;
 
@@ -8,9 +9,6 @@ let nftContract;
 let oldNftContract;
 
 let isInitialized = false;
-
-const contractAddress = "0xd8544E4d184b6d7bae36999897298bC9692b871b";
-const oldContractAddress = "0xf8207bcfef4cc5dfd711545275b94e1bf17ca0de";
 
 export const initWeb3 = async () => {
   let provider = window.ethereum;
